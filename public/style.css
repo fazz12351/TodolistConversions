@@ -1,0 +1,105 @@
+.dark-text {
+    color: white;
+}
+
+.light-text {
+    color: black;
+}
+
+.welcome {
+    padding-top: 50px;
+    ;
+    text-align: center;
+}
+
+
+.container {
+    padding-top: 5px;
+    border: 1px solid black;
+}
+
+
+
+.dark {
+    background-color: black;
+    color: white;
+}
+
+.dull {
+    background-color: cadetblue;
+}
+
+.bright {
+    background-color: #A9FC04;
+}
+
+.dark-border {
+    border: 1px solid white;
+}
+
+.middle-container,.bottom-container {
+    margin-top: 50px;
+    ;
+    text-align: center;
+}
+
+.hovering:hover {
+    border: 5px solid grey;
+}
+
+.whitebg {
+    background-color: white;
+    ;
+}
+
+.greybg {
+    background-color:white;
+}
+
+.darkbg {
+    background-color: black;
+}
+
+
+
+
+.Bottom-Container {
+
+    margin-top: 50px;
+    ;
+    text-align: center;
+}
+
+.HomeButton {
+    margin-top: 15px;
+    ;
+}
+
+@media (max-width:750px) {
+    body {
+        text-align: center;
+    }
+
+    button {
+        margin-bottom: 25px;
+        ;
+    }
+
+    input {
+        margin-top: 10px;
+    }
+
+    .middle-container img {
+        padding-top: 15px;
+        ;
+        text-align: center;
+        margin-left: 25%;
+        width: 50%;
+    }
+
+}
+
+.navbar button{
+    color: black;
+    background-color: #69be39;
+}
