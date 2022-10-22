@@ -1,3 +1,7 @@
+
+body{
+    font-family: 'Fuzzy Bubbles', cursive;
+}
 .dark-text {
     color: white;
 }
@@ -101,5 +105,10 @@
 
 .navbar button{
     color: black;
+    background-color: #69be39;
+}
+.top-bar{
+
+    padding-bottom: 25px;;
     background-color: #69be39;
 }
