@@ -67,22 +67,18 @@ app.get("/views", function (req, res) {
 
 
 app.post("/views", function (req, res) {
-    res.render("page2", {
-        Date: myday,
-        Hours: daysOfTheWeek.getHours(),
-        Minutes: daysOfTheWeek.getMinutes(),
-        Seconds: daysOfTheWeek.getSeconds(),
-        items: items
-
-    })
+    page2renders(req,res)
 
 })
 
 app.post("/views2", function (req, res) {
     let itemsinputted = req.body.items;
     let delteditem = req.body.deleteditem;
+    let deleteworkoutItem=req.body.deleteworkout;
     addItem(items, itemsinputted)
     deleteitems(items, delteditem)
+    deleteitems(WorkOutlist,deleteworkoutItem)
+
     res.redirect("/views")
 })
 
@@ -125,11 +121,13 @@ function page2renders(req,res){
         Hours: daysOfTheWeek.getHours(),
         Minutes: daysOfTheWeek.getMinutes(),
         Seconds: daysOfTheWeek.getSeconds(),
-        items: items
+        items: items,
+        workoutItem:WorkOutlist
 
     })
 
 }
+
 
 
 

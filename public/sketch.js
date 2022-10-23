@@ -55,13 +55,22 @@ function TimeOfDay(time) {
     }
 }
 
-
+Hours=18
 
 TimeOfDay(Hours)
 
 messageVisibility(false, ".message", "message")
 
 messageVisibility(true, ".card", "hovering")
+
+
+let text=document.querySelectorAll("p");
+
+for(var i=0;i<text.length;i++){
+    text[i].addEventListener("mouseover",function(e){
+        this.classList.add("enlarge")
+    })
+}
 
 
 

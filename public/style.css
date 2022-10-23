@@ -1,6 +1,7 @@
 
 body{
     font-family: 'Fuzzy Bubbles', cursive;
+    font-size: 1.5rem;
 }
 .dark-text {
     color: white;
@@ -45,6 +46,9 @@ body{
     margin-top: 50px;
     ;
     text-align: center;
+}
+.Bottom-Container{
+    background-color: #69be39;
 }
 
 .hovering:hover {
@@ -112,3 +116,10 @@ body{
     padding-bottom: 25px;;
     background-color: #69be39;
 }
+
+
+.enlarge:hover{
+
+    font-size: 3rem;
+}
+
