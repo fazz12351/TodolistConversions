@@ -55,7 +55,7 @@ function TimeOfDay(time) {
     }
 }
 
-Hours=18
+
 
 TimeOfDay(Hours)
 

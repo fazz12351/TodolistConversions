@@ -1,27 +1,34 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const Date = require(__dirname + "/Date.js")
 let port = 3000;
 
 const app = express();
-app.set("view engine", "ejs");
 
+
+app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({
     extended: true
 }));
-
-let items = ["Milk", "Bread"];
-let WorkOutlist = ["Bench", "Squat"];
-
 app.use(express.static("public"))
 
 
+
+
+let items = ["Milk", "Bread"];
+let WorkOutlist = ["Bench", "Squat"];
+let workElements = [];
+
+
 let deleteitem = ""
+let workSchedule = []
+let myday = Date();
 
 
-let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursay", "Friday", "Saturday"]
-let daysOfTheWeek = new Date();
-let intDAy = daysOfTheWeek.getDay();
-let myday = days[intDAy]
+
+
+
+
 
 
 app.get("/", function (req, res) {
@@ -44,6 +51,8 @@ app.post("/", function (req, res) {
 
     deleteitems(WorkOutlist, deleteitem);
     deleteitems(items, deleteitem1)
+    checkInput(items);
+    checkInput(WorkOutlist)
 
 
     res.redirect("/")
@@ -58,29 +67,61 @@ app.post("/viewss", function (req, res) {
 
 
 
+
 app.get("/views", function (req, res) {
-    page2renders(req,res)
+    page2renders(req, res)
 
 })
-
-
-
-
 app.post("/views", function (req, res) {
-    page2renders(req,res)
+    let buttonPressed = req.body.button2
+    page2renders(req, res)
 
 })
+
+
+
+
+
+
 
 app.post("/views2", function (req, res) {
     let itemsinputted = req.body.items;
     let delteditem = req.body.deleteditem;
-    let deleteworkoutItem=req.body.deleteworkout;
+    let deleteworkoutItem = req.body.deleteworkout;
     addItem(items, itemsinputted)
     deleteitems(items, delteditem)
-    deleteitems(WorkOutlist,deleteworkoutItem)
+    deleteitems(WorkOutlist, deleteworkoutItem)
 
     res.redirect("/views")
 })
+
+
+app.post("/views3", function (req, res) {
+    VIPrenders(req,res)
+
+})
+
+
+app.get("/work", function (req, res) {
+    VIPrenders(req,res)
+
+})
+
+app.post("/work", function (req, res) {
+    let item = req.body.items
+    let delteditemwork = req.body.deleteditem
+    addItem(workElements, item)
+    deleteitems(workElements, delteditemwork)
+    res.redirect("/work")
+
+})
+
+
+app.get("about", function (req, res) {
+    res.render("about", {})
+})
+
+
 
 
 
@@ -106,8 +147,8 @@ function page1renders(req, res) {
 
     res.render("page1", {
         Fname: "Faeem",
-        Day: myday,
-        Date: daysOfTheWeek,
+        Day: myday.Day,
+        Date: myday.todaysDate,
         newItems: items,
         workout: WorkOutlist
 
@@ -115,18 +156,44 @@ function page1renders(req, res) {
 
 }
 
-function page2renders(req,res){
+function page2renders(req, res) {
+    
     res.render("page2", {
-        Date: myday,
-        Hours: daysOfTheWeek.getHours(),
-        Minutes: daysOfTheWeek.getMinutes(),
-        Seconds: daysOfTheWeek.getSeconds(),
+        Date: myday.Day,
+        Hours: myday.todaysDate.getHours(),
+        Minutes: myday.todaysDate.getMinutes(),
+        Seconds: myday.todaysDate.getSeconds(),
         items: items,
-        workoutItem:WorkOutlist
+        workoutItem: WorkOutlist
 
     })
 
 }
+
+function VIPrenders(req,res){
+
+    res.render("VIP", {
+        Date: myday.Day,
+        Hours: myday.todaysDate.getHours(),
+        Minutes: myday.todaysDate.getMinutes(),
+        Seconds: myday.todaysDate.getSeconds(),
+        items: workElements,
+        module: "Work"
+
+    })
+
+
+}
+
+function checkInput(arr) {
+    for (var i = 0; i < arr.length; i++) {
+        if (arr[i] === "") {
+            console.log("not a valid input")
+            arr.splice(i, 1)
+        }
+    }
+}
+
 
 
 
