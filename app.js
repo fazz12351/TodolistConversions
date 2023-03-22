@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const Date = require(__dirname + "/Date.js")
+
 let port = 3000;
 
 const app = express();
@@ -15,14 +16,15 @@ app.use(express.static("public"))
 
 
 
-let items = ["Milk", "Bread"];
-let WorkOutlist = ["Bench", "Squat"];
-let workElements = [];
+const items = ["Milk", "Bread"];
+const WorkOutlist = ["Bench", "Squat"];
+const workElements = [];
 
 
 let deleteitem = ""
 let workSchedule = []
 let myday = Date();
+
 
 
 
@@ -178,7 +180,7 @@ function VIPrenders(req,res){
         Minutes: myday.todaysDate.getMinutes(),
         Seconds: myday.todaysDate.getSeconds(),
         items: workElements,
-        module: "Work"
+        module: "VIP"
 
     })
 
